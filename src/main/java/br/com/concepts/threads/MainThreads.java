@@ -1,7 +1,10 @@
-package br.com.concepts.threads.thread;
+package br.com.concepts.threads;
 
 import static br.com.concepts.threads.thread.ThreadColor.ANSI_GREEN;
 import static br.com.concepts.threads.thread.ThreadColor.ANSI_PURPLE;
+
+import br.com.concepts.threads.runnable.MyRunnable;
+import br.com.concepts.threads.thread.AnotherThread;
 
 public class MainThreads {
 
@@ -15,6 +18,7 @@ public class MainThreads {
 
         // Creates a new instance of the class that we've created that overrides the Thread superclass
         var anotherThread = new AnotherThread();
+        anotherThread.setName("== Another Thread =="); // It's possible to set a name for thread to me easier to identify
 
         // Start the run method to execute the block of code
         anotherThread.start();
@@ -25,7 +29,14 @@ public class MainThreads {
         // Using lambdas (anonymous class) to create a thread
         Thread threadUsingLambda = new Thread(() -> System.out.println("Running inside the lambda"));
 
+        // Another form of creating thread is implementing the runnable interface
+        var myRUnnableThread = new Thread(new MyRunnable());
+        myRUnnableThread.start();
+
         threadUsingLambda.start();
+
+        // Its more flexibe to use runnable instead of creatind a class that extends Threads.
+        // Many classes in more recent versions of java expects Runnable objects.
 
     }
 }
