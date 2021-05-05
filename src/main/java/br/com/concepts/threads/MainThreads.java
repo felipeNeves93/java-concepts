@@ -59,6 +59,5 @@ public class MainThreads {
 
         // Its more flexibe to use runnable instead of creatind a class that extends Threads.
         // Many classes in more recent versions of java expects Runnable objects.
-
     }
 }
